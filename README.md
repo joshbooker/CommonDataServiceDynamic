@@ -27,10 +27,12 @@ namespace Microsoft.CommonDataService
 ```
 ## Usage:
 
-```
-                var query2 = client.GetRelationalEntitySet<ProductCategory>()
-                        .CreateQueryBuilder()
-                        //.Where(pc => pc.Name == "Surface" || pc.Name == "Phone")
-                        .Where("Name = \"Surface\" OR Name = \"Phone\"")
-                        .Project(pc => pc.SelectField(f => f["CategoryId"]).SelectField(f => f["Name"]));
+```C#
+var query = client.GetRelationalEntitySet<ProductCategory>()
+        .CreateQueryBuilder()
+        //instead of:
+        //.Where(pc => pc.Name == "Surface" || pc.Name == "Phone")
+        //this:
+        .Where("Name = \"Surface\" OR Name = \"Phone\"")
+        .Project(pc => pc.SelectField(f => f["CategoryId"]).SelectField(f => f["Name"]));
 ```
