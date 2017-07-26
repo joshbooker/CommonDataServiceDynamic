@@ -1,8 +1,8 @@
 # CommonDataServiceDynamic
 
-this is a console app which demonstrates extending the CDS API to enable dynamic queries.  It extends the `.Where` method to accept strings as criteria and uses the `DynamicExpression` class of the [Linq Dynamic Query Library](https://github.com/kahanu/System.Linq.Dynamic/blob/master/Src/System.Linq.Dynamic/DynamicLinq.cs) to parse strings into valid lambda expressions.
+this is a console app which demonstrates extending the [CDS API](https://docs.microsoft.com/en-us/common-data-service/entity-reference/cds-sdk-manipulate-data) to enable dynamic queries.  It extends the `.Where` method to accept strings as criteria and uses the [`DynamicExpression`](https://github.com/kahanu/System.Linq.Dynamic/wiki/Dynamic-Expressions#dynamic-expression-api) class of the [Linq Dynamic Query Library](https://github.com/kahanu/System.Linq.Dynamic/blob/master/Src/System.Linq.Dynamic/DynamicLinq.cs) to parse strings into valid lambda expressions.
 
-## The Extension method is the following:
+## Extension method:
 
 ```C#
 using System;
@@ -36,3 +36,8 @@ var query = client.GetRelationalEntitySet<ProductCategory>()
         .Where("Name = \"Surface\" OR Name = \"Phone\"")
         .Project(pc => pc.SelectField(f => f["CategoryId"]).SelectField(f => f["Name"]));
 ```
+
+## More Info:
+
+[Expression Language](https://github.com/kahanu/System.Linq.Dynamic/wiki/Dynamic-Expressions#expression-language)
+
